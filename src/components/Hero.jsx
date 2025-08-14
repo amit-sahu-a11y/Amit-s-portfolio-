@@ -89,7 +89,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="/Resume_Amit_Sahu.pdf"  // Make sure PDF is in public folder
+            href="public\Resume's_Amit_Sahu.pdf"  // Make sure PDF is in public folder
             download
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-semibold shadow-md transition"
           >
