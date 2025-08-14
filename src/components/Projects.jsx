@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-const projectList = [
+const allProjects = [
   // --- Web Projects ---
   {
     title: "E-Commerce Web App",
@@ -78,14 +78,16 @@ const fadeUp = {
     y: 0,
     transition: { delay: i * 0.1, duration: 0.5 },
   }),
+  exit: { opacity: 0, y: 30, transition: { duration: 0.3 } },
 };
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const filtered =
+
+  const filteredProjects =
     activeCategory === "All"
-      ? projectList
-      : projectList.filter((p) => p.category === activeCategory);
+      ? allProjects
+      : allProjects.filter((p) => p.category === activeCategory);
 
   return (
     <motion.section
@@ -126,20 +128,26 @@ export default function Projects() {
 
       {/* Project Cards */}
       <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((proj, idx) => (
-          <motion.div
-            key={idx}
-            variants={fadeUp}
-            custom={idx + 2}
-            className="bg-white/10 backdrop-blur-lg border border-white/20 text-white p-6 rounded-2xl shadow-xl hover:scale-105 transform transition duration-300"
-          >
-            <h3 className="text-xl font-semibold mb-2">{proj.title}</h3>
-            <p className="text-sm text-gray-200">{proj.desc}</p>
-            <span className="mt-2 inline-block text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">
-              {proj.category}
-            </span>
-          </motion.div>
-        ))}
+        <AnimatePresence>
+          {filteredProjects.map((proj, idx) => (
+            <motion.div
+              key={proj.title}
+              custom={idx + 2}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={fadeUp}
+              layout
+              className="bg-white/10 backdrop-blur-lg border border-white/20 text-white p-6 rounded-2xl shadow-xl hover:scale-105 transform transition duration-300"
+            >
+              <h3 className="text-xl font-semibold mb-2">{proj.title}</h3>
+              <p className="text-sm text-gray-200">{proj.desc}</p>
+              <span className="mt-2 inline-block text-xs text-blue-300 bg-blue-900/30 px-2 py-1 rounded">
+                {proj.category}
+              </span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </motion.section>
   );
