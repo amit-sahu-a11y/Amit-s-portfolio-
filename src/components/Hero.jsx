@@ -26,7 +26,7 @@ export default function Hero() {
         className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden shadow-lg ring-4 ring-white/30"
       >
         <img
-          src="public\IMG20241005173251.jpg"   // Place image in public folder
+          src="\IMG20241005173251.jpg"   // Place image in public folder
           alt="Amit Sahu"
           className="object-cover w-full h-full"
         />
@@ -89,7 +89,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="public\Resume's_Amit_Sahu.pdf"  // Make sure PDF is in public folder
+            href="\Resume's_Amit_Sahu.pdf"  // Make sure PDF is in public folder
             download
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-semibold shadow-md transition"
           >
