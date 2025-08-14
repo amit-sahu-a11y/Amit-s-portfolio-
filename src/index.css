@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.dark {
+  @apply bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a];
+}
+
+html.light {
+  @apply bg-gradient-to-br from-white via-gray-100 to-white text-black;
+}
